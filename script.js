@@ -8,7 +8,7 @@ let ltrNum = 81
 function createField () {
     for(i=100; i > 0; i--) {
         let newkletka = document.createElement("div")
-        newkletka.style.background = "blue"
+        // newkletka.style.background = "blue"
         newkletka.style.color = "#fff"
         newkletka.setAttribute("class", "kletka")
         //generete numbers in snake style
@@ -32,7 +32,7 @@ createField ()
 
 // Get random number  -------------------------------------------------------------------------
 function getRandomNumber() {
-    return Math.floor(Math.random() * 6) + 1;
+    return Math.floor(Math.random() * 3) + 1;
   }
 
 
@@ -72,17 +72,20 @@ let activeplayer = 1;
 let curplayer;
 let p1 = document.getElementById("player1")
 let p2 = document.getElementById("player2")
+
+let checksnake = 0;
+
+
 if (activeplayer === 1) {
     curplayer = p1
 } else if (activeplayer === 2){
     curplayer = p2
 }
-console.log(curplayer)
 // check current position---------------------
 let currentposition = 0
 
 function positionChecker (curplayer) {  
-    const rect = curplayer.getBoundingClientRect();
+    const rect = p1.getBoundingClientRect();
     const x = rect.left + rect.width / 2;
     const y = rect.top + rect.height / 2;
     const elementsUnderAbsolute = document.elementsFromPoint(x, y); 
@@ -94,13 +97,13 @@ function positionChecker (curplayer) {
 }
 
 
-function action () {
 
-    console.log(curplayer, currentposition)
+function action () {
 
 let randomnumber = getRandomNumber() // создаем рандомное число
 let dvalue = document.getElementById("drop-value")
 dvalue.textContent = randomnumber // выводим рандомное число
+
 
     let move = setInterval(function(){   // начинаем повторение
          //получаем поизцию активного игрока
@@ -112,7 +115,7 @@ dvalue.textContent = randomnumber // выводим рандомное числ�
         } else if ([11,12,13,14,15,16,17,18,19,31,32,33,34,35,36,37,38,39,51,52,53,54,55,56,57,58,59,71,72,73,74,75,76,77,78,79,91,92,93,94,95,96,97,98,99].includes(currentposition)) {
             curplayer.style.marginLeft = mat +"px"
             mat--
-        }  else {
+        } else {
             curplayer.style.marginLeft = mat +"px"
             mat++
         }
@@ -126,16 +129,73 @@ dvalue.textContent = randomnumber // выводим рандомное числ�
                 }
                 
                 curplayer.style.marginLeft = mat + "px"
-                 clearInterval(move)
-        }
+                clearInterval(move)
+                checksnake = currentposition
+                
+        } 
+
         activeplayer++ 
         if (activeplayer > 2) {
             activeplayer = 1
         }
 },1)
-console.log(activeplayer, curplayer)
+
+if (checksnake === 4 ){
+    console.log("sssss")
+    sneak (14)
+}
+
 
 }
+
+let ctnnn = document.getElementById("drop3")
+
+ctnnn.addEventListener("click", cons)
+function cons () {
+    console.log(checksnake)
+    sneak (14)
+}
+
+
+
+
+
+function sneak (stop) {
+    
+    let snkk = setInterval(function(){ 
+        positionChecker(curplayer);
+
+    if ([10,20,30,40,50,60,70,80,90].includes(currentposition)) {
+        console.log("aaaa")
+        curplayer.style.marginBottom = marginBot+"px"
+        marginBot += 71.8
+    } else if ([11,12,13,14,15,16,17,18,19,31,32,33,34,35,36,37,38,39,51,52,53,54,55,56,57,58,59,71,72,73,74,75,76,77,78,79,91,92,93,94,95,96,97,98,99].includes(currentposition)) {
+        curplayer.style.marginLeft = mat +"px"
+        mat--
+    } else {
+        console.log("left", currentposition)
+        curplayer.style.marginLeft = mat +"px"
+        mat++
+    }
+
+    if ( currentposition ===  stop ) {
+            positionbufferp1 += randomnumber
+        curplayer.style.marginLeft = mat + "px"
+        clearInterval(snkk)
+        checksnake = currentposition       
+} 
+},1)
+}
+
+
+
+
+
+
+
+/// Дальше второй игрок  - копия первого игрока
+
+
 
 
 
