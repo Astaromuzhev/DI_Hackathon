@@ -113,11 +113,11 @@ function moover (currentplayer) {
         currentplayer.marginbottom += 71.8
 
     } else if (nechetnie.includes(currentplayer.currentposition)) {
-        currentplayer.fishka.style.marginLeft = actualgamer.margleft +"px"
+        currentplayer.fishka.style.marginLeft = currentplayer.margleft +"px"
         currentplayer.margleft--
         currentplayer.fishka.style.animation = ""; 
     } else {
-        currentplayer.fishka.style.marginLeft = actualgamer.margleft +"px"
+        currentplayer.fishka.style.marginLeft = currentplayer.margleft +"px"
         currentplayer.margleft++
         currentplayer.fishka.style.animation = ""; 
     }
@@ -131,13 +131,13 @@ function backmoover (currentplayer) {
     
     } else if (nechetnie2.includes(currentplayer.currentposition)) {
         currentplayer.margleft++
-        currentplayer.fishka.style.marginLeft = actualgamer.margleft +"px"
+        currentplayer.fishka.style.marginLeft = currentplayer.margleft +"px"
     
         console.log("++++")
 
     } else {
         currentplayer.margleft--
-        currentplayer.fishka.style.marginLeft = actualgamer.margleft +"px"
+        currentplayer.fishka.style.marginLeft = currentplayer.margleft +"px"
         console.log("----")
     
     }
@@ -205,6 +205,12 @@ function stopper (currentplayer, randnumber, intervalname) {
         ladder (actualgamer,60)
     }  else if (currentplayer.lastpoint === 87) {
         ladder (actualgamer,24)
+    } else if (currentplayer.lastpoint === 93) {
+        ladder (actualgamer,73)
+    } else if (currentplayer.lastpoint === 95) {
+        ladder (actualgamer,75)
+    } else if (currentplayer.lastpoint === 98) {
+        ladder (actualgamer,78)
     } 
 } 
 }
