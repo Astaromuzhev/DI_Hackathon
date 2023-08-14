@@ -1,6 +1,8 @@
 let pole = document.getElementById("pole")
 let dropbtn = document.getElementById("drop")
 let dropbtn2 = document.getElementById("drop2")
+let nechetnie = [11,12,13,14,15,16,17,18,19,31,32,33,34,35,36,37,38,39,51,52,53,54,55,56,57,58,59,71,72,73,74,75,76,77,78,79,91,92,93,94,95,96,97,98,99]
+let nechetnie2 = [20,40,60,80,11,12,13,14,15,16,17,18,19,31,32,33,34,35,36,37,38,39,51,52,53,54,55,56,57,58,59,71,72,73,74,75,76,77,78,79,91,92,93,94,95,96,97,98,99]
 
 let ltrNum = 81
 
@@ -10,10 +12,14 @@ function createField () {
         let newkletka = document.createElement("div")
         // newkletka.style.background = "blue"
         newkletka.style.color = "#fff"
+        newkletka.style.paddingTop = "6px"
+        newkletka.style.paddingLeft = "7px"
         newkletka.setAttribute("class", "kletka")
+        let span = document.createElement("span")
+        
         //generete numbers in snake style
             if ((i - 1) % 20 < 10){ //     if ((i > 0 && i <= 10) || (i > 20 && i <= 30) || (i > 40 && i <= 50) || (i > 60 && i <= 70) || (i > 80 && i <= 90) ){
-                newkletka.textContent = ltrNum  
+                span.textContent = ltrNum  
                 ltrNum++
                 for(a=0; a<5; a++) {
                     if([91,71,51,31].includes(ltrNum)) {
@@ -21,18 +27,19 @@ function createField () {
                     }
                 }
             } else {
-                newkletka.textContent =  i
+                span.textContent =  i
             }
 
-        newkletka.setAttribute("id", newkletka.textContent) // add id to every block
+        newkletka.setAttribute("id", span.textContent) // add id to every block
         pole.appendChild(newkletka)
+        newkletka.appendChild(span)
     }
 }
 createField ()
 
 // Get random number  -------------------------------------------------------------------------
 function getRandomNumber() {
-    return Math.floor(Math.random() * 3) + 1;
+    return Math.floor(Math.random() * 6) + 1;
   }
 
 
@@ -52,225 +59,223 @@ pole.appendChild(player2)
 
 
 
-dropbtn.addEventListener("click", action)
-
-dropbtn2.addEventListener("click", action2)
 
 
+let randomnumber;
+
+let playersData = [
+    {
+    margleft: 0,
+    fishka: document.getElementById("player1"),
+    currentposition: 1,
+    bufferposition: 1,
+    lastpoint: 1,
+    marginbottom: 0,
+    isAnimating: false
+
+    },
+    {
+    margleft: 0,
+    fishka: document.getElementById("player2"),
+    currentposition: 1,
+    bufferposition: 1,
+    lastpoint: 1,
+    marginbottom: 71.8
+    }
+]
+
+
+
+let gamer1 = playersData[0]
+
+let gamer2 = playersData[1]
+
+
+
+let actualgamer = gamer1
+
+console.log(actualgamer.fishka)
+let checker = 1
 
 
 
 
 
 
-mat = 1
-let marginBot = 71.8
-let randomnumber = getRandomNumber()
-let positionbufferp1 = 1;
-let positionbufferp2 = 1;
-let activeplayer = 1;
-let curplayer;
-let p1 = document.getElementById("player1")
-let p2 = document.getElementById("player2")
 
-let checksnake = 0;
+// currentplayer == actualgamer
 
 
-if (activeplayer === 1) {
-    curplayer = p1
-} else if (activeplayer === 2){
-    curplayer = p2
+function moover (currentplayer) {
+    if ([10,20,30,40,50,60,70,80,90].includes(currentplayer.currentposition) && (currentplayer.currentposition !==  randomnumber + currentplayer.bufferposition)) {
+        currentplayer.fishka.style.marginBottom = currentplayer.marginbottom+"px"
+        currentplayer.marginbottom += 71.8
+
+    } else if (nechetnie.includes(currentplayer.currentposition)) {
+        currentplayer.fishka.style.marginLeft = actualgamer.margleft +"px"
+        currentplayer.margleft--
+        currentplayer.fishka.style.animation = ""; 
+    } else {
+        currentplayer.fishka.style.marginLeft = actualgamer.margleft +"px"
+        currentplayer.margleft++
+        currentplayer.fishka.style.animation = ""; 
+    }
 }
-// check current position---------------------
-let currentposition = 0
 
-function positionChecker (curplayer) {  
-    const rect = p1.getBoundingClientRect();
+function backmoover (currentplayer) {
+    if ([11,21,31,41,51,61,71,81,91].includes(currentplayer.currentposition) && (currentplayer.currentposition !==  randomnumber + currentplayer.bufferposition)) {
+        currentplayer.marginbottom -= 71.8
+        currentplayer.fishka.style.marginBottom = currentplayer.marginbottom+"px"
+
+    
+    } else if (nechetnie2.includes(currentplayer.currentposition)) {
+        currentplayer.margleft++
+        currentplayer.fishka.style.marginLeft = actualgamer.margleft +"px"
+    
+        console.log("++++")
+
+    } else {
+        currentplayer.margleft--
+        currentplayer.fishka.style.marginLeft = actualgamer.margleft +"px"
+        console.log("----")
+    
+    }
+    
+}
+
+
+function positionChecker (checkpos) {  
+    const rect = checkpos.fishka.getBoundingClientRect();
     const x = rect.left + rect.width / 2;
     const y = rect.top + rect.height / 2;
     const elementsUnderAbsolute = document.elementsFromPoint(x, y); 
     elementsUnderAbsolute.forEach(div => {
         if (div.classList.contains("kletka")) {
-         currentposition = Number(div.id)
+            checkpos.currentposition = Number(div.id)
         }
     });
 }
 
+
+function stopper (currentplayer, randnumber, intervalname) {
+    
+    if ( currentplayer.currentposition ===  randnumber + currentplayer.bufferposition  || currentplayer.currentposition === 100 ) {
+        currentplayer.bufferposition += randnumber
+        clearInterval(intervalname)
+        dropbtn.disabled = false;
+
+    if (nechetnie2.includes(currentplayer.currentposition)) {
+        currentplayer.fishka.style.marginLeft = currentplayer.margleft - 35 + "px"
+        currentplayer.margleft -= 35
+    }  else {
+        currentplayer.fishka.style.marginLeft = currentplayer.margleft + 35 + "px"
+        currentplayer.margleft += 35
+    }
+
+    currentplayer.lastpoint = currentplayer.currentposition
+
+    if (currentplayer.lastpoint === 4) {
+        sneak (actualgamer,14)
+    } else if (currentplayer.lastpoint === 9) {
+        sneak (actualgamer,31)
+    } else if (currentplayer.lastpoint === 28) {
+        sneak (actualgamer,84)
+    } else if (currentplayer.lastpoint === 21) {
+        sneak (actualgamer,42)
+    } else if (currentplayer.lastpoint === 36) {
+        sneak (actualgamer,42)
+    } else if (currentplayer.lastpoint === 51) {
+        sneak (actualgamer,67)
+    } else if (currentplayer.lastpoint === 71) {
+        sneak (actualgamer,91)
+    } else if (currentplayer.lastpoint === 80) {
+        sneak (actualgamer,100)
+    } else if (currentplayer.lastpoint === 16) {
+        ladder (actualgamer,6)
+    } else if (currentplayer.lastpoint === 49) {
+        ladder (actualgamer,30)
+    } else if (currentplayer.lastpoint === 47) {
+        ladder (actualgamer,26)
+    } else if (currentplayer.lastpoint === 56) {
+        ladder (actualgamer,53)
+    } else if (currentplayer.lastpoint === 62) {
+        ladder (actualgamer,19)
+    } else if (currentplayer.lastpoint === 63) {
+        ladder (actualgamer,60)
+    }  else if (currentplayer.lastpoint === 87) {
+        ladder (actualgamer,24)
+    } 
+} 
+}
+
+
+function sneak (currentplayer, stop) {
+    setTimeout(function() {
+    let snkk = setInterval(function(){ 
+    positionChecker(currentplayer);
+
+    moover (currentplayer);
+
+    if ( currentplayer.currentposition ===  stop ) {
+        currentplayer.bufferposition += (stop - currentplayer.bufferposition)
+        currentplayer.fishka.style.marginLeft = currentplayer.margleft + "px"
+        
+        clearInterval(snkk)
+        
+        currentplayer.lastpoint = currentplayer.currentposition       
+} 
+},1)
+} ,1000)
+}
+
+
+function ladder (currentplayer, stop) {
+    console.log("на змее")
+    setTimeout(function() {
+    let snkk = setInterval(function(){ 
+    positionChecker(currentplayer);
+
+    backmoover (currentplayer);
+
+    if ( currentplayer.currentposition ===  stop ) {
+        currentplayer.bufferposition -= (currentplayer.bufferposition - stop)
+        currentplayer.fishka.style.marginLeft = currentplayer.margleft + "px"
+        clearInterval(snkk)
+        console.log(currentplayer.bufferposition, currentplayer.currentposition)     
+} 
+},1)
+} ,1000)
+}
 
 
 function action () {
+    dropbtn.disabled = true
+    if(checker === 3) {
+        checker = 1
+    }
 
-let randomnumber = getRandomNumber() // создаем рандомное число
+    if (checker === 1) {
+        actualgamer = gamer1
+    } else if (checker === 2) {
+        actualgamer = gamer2
+    }
+
+randomnumber = getRandomNumber() // создаем рандомное число
 let dvalue = document.getElementById("drop-value")
 dvalue.textContent = randomnumber // выводим рандомное число
 
-
     let move = setInterval(function(){   // начинаем повторение
-         //получаем поизцию активного игрока
-         positionChecker (curplayer)
-         // moover
-        if ([10,20,30,40,50,60,70,80,90].includes(currentposition)) {
-            curplayer.style.marginBottom = marginBot+"px"
-            marginBot += 71.8
-        } else if ([11,12,13,14,15,16,17,18,19,31,32,33,34,35,36,37,38,39,51,52,53,54,55,56,57,58,59,71,72,73,74,75,76,77,78,79,91,92,93,94,95,96,97,98,99].includes(currentposition)) {
-            curplayer.style.marginLeft = mat +"px"
-            mat--
-        } else {
-            curplayer.style.marginLeft = mat +"px"
-            mat++
-        }
-          // stoper
-             if ( currentposition ===  randomnumber + positionbufferp1  || currentposition === 100 ) {
-
-                if (activeplayer === 1) {
-                    positionbufferp1 += randomnumber
-                } else if (activeplayer === 2) {
-                    positionbufferp1 += randomnumber
-                }
-                
-                curplayer.style.marginLeft = mat + "px"
-                clearInterval(move)
-                checksnake = currentposition
-                
-        } 
-
-        activeplayer++ 
-        if (activeplayer > 2) {
-            activeplayer = 1
-        }
-},1)
-
-if (checksnake === 4 ){
-    console.log("sssss")
-    sneak (14)
-}
-
-
-}
-
-let ctnnn = document.getElementById("drop3")
-
-ctnnn.addEventListener("click", cons)
-function cons () {
-    console.log(checksnake)
-    sneak (14)
+         positionChecker (actualgamer)  //получаем поизцию активного игрока
+         moover (actualgamer)   // moover
+         stopper (actualgamer, randomnumber,move)   // stoper
+        },1)
+        checker++
+        console.log(checker)
+     
 }
 
 
 
+dropbtn.addEventListener("click", action)
 
-
-function sneak (stop) {
-    
-    let snkk = setInterval(function(){ 
-        positionChecker(curplayer);
-
-    if ([10,20,30,40,50,60,70,80,90].includes(currentposition)) {
-        console.log("aaaa")
-        curplayer.style.marginBottom = marginBot+"px"
-        marginBot += 71.8
-    } else if ([11,12,13,14,15,16,17,18,19,31,32,33,34,35,36,37,38,39,51,52,53,54,55,56,57,58,59,71,72,73,74,75,76,77,78,79,91,92,93,94,95,96,97,98,99].includes(currentposition)) {
-        curplayer.style.marginLeft = mat +"px"
-        mat--
-    } else {
-        console.log("left", currentposition)
-        curplayer.style.marginLeft = mat +"px"
-        mat++
-    }
-
-    if ( currentposition ===  stop ) {
-            positionbufferp1 += randomnumber
-        curplayer.style.marginLeft = mat + "px"
-        clearInterval(snkk)
-        checksnake = currentposition       
-} 
-},1)
-}
-
-
-
-
-
-
-
-/// Дальше второй игрок  - копия первого игрока
-
-
-
-
-
-
-mat2 = 1
-let marginBot2 = 71.8
-let randomnumber2 = getRandomNumber()
-let positionbufferp122 = 1;
-let positionbufferp222 = 1;
-let activeplayer2 = 1;
-let curplayer2;
-let p12 = document.getElementById("player1")
-let p22 = document.getElementById("player2")
-if (activeplayer2 === 1) {
-    curplayer2 = p12
-} else if (activeplayer2 === 2){
-    curplayer2 = p22
-}
-console.log(curplayer2)
-// check current position---------------------
-let currentposition2 = 0
-
-function positionChecker2 (curplayer2) {  
-    const rect = p22.getBoundingClientRect();
-    const x = rect.left + rect.width / 2;
-    const y = rect.top + rect.height / 2;
-    const elementsUnderAbsolute = document.elementsFromPoint(x, y); 
-    elementsUnderAbsolute.forEach(div => {
-        if (div.classList.contains("kletka")) {
-         currentposition2 = Number(div.id)
-        }
-    });
-    return currentposition2
-}
-
-
-function action2 () {
-
- 
-
-let randomnumber2 = getRandomNumber() // создаем рандомное число
-let dvalue = document.getElementById("drop-value")
-dvalue.textContent = randomnumber2 // выводим рандомное число
-
-    let move = setInterval(function(){   // начинаем повторение
-         //получаем поизцию активного игрока
-         positionChecker2 (curplayer2)
-         // moover
-        if ([10,20,30,40,50,60,70,80,90].includes(currentposition2)) {
-            p22.style.marginBottom = marginBot2+"px"
-            marginBot2 += 71.8
-        } else if ([11,12,13,14,15,16,17,18,19,31,32,33,34,35,36,37,38,39,51,52,53,54,55,56,57,58,59,71,72,73,74,75,76,77,78,79,91,92,93,94,95,96,97,98,99].includes(currentposition2)) {
-            p22.style.marginLeft = mat2 +"px"
-            mat2--
-        }  else {
-            p22.style.marginLeft = mat2 +"px"
-            mat2++
-            console.log(currentposition2)
-        }
-
-        
-          // stoper
-             if ( currentposition2 ===  randomnumber2 + positionbufferp122  || currentposition2 === 100 ) {
-
-           
-                    positionbufferp122 += randomnumber2
-                
-                p22.style.marginLeft = mat2 + "px"
-                 clearInterval(move)
-        }
-        activeplayer2++ 
-        if (activeplayer2 > 2) {
-            activeplayer2 = 1
-        }
-},1)
-console.log(currentposition2, randomnumber2, positionbufferp122)
-
-}
+// dropbtn2.addEventListener("click", action2)
