@@ -162,16 +162,17 @@ function stopper (currentplayer, randnumber, intervalname) {
     
     if ( currentplayer.currentposition ===  randnumber + currentplayer.bufferposition  || currentplayer.currentposition === 100 ) {
         currentplayer.bufferposition += randnumber
-        clearInterval(intervalname)
+        setTimeout(function() {clearInterval(intervalname)} , 135)
+        
         dropbtn.disabled = false;
 
-    if (nechetnie2.includes(currentplayer.currentposition)) {
-        currentplayer.fishka.style.marginLeft = currentplayer.margleft - 35 + "px"
-        currentplayer.margleft -= 35
-    }  else {
-        currentplayer.fishka.style.marginLeft = currentplayer.margleft + 35 + "px"
-        currentplayer.margleft += 35
-    }
+    // if (nechetnie2.includes(currentplayer.currentposition)) {
+    //     currentplayer.fishka.style.marginLeft = currentplayer.margleft - 35 + "px"
+    //     currentplayer.margleft -= 35
+    // }  else {
+    //     currentplayer.fishka.style.marginLeft = currentplayer.margleft + 35 + "px"
+    //     currentplayer.margleft += 35
+    // }
 
     currentplayer.lastpoint = currentplayer.currentposition
 
@@ -226,8 +227,8 @@ function sneak (currentplayer, stop) {
     if ( currentplayer.currentposition ===  stop ) {
         currentplayer.bufferposition += (stop - currentplayer.bufferposition)
         currentplayer.fishka.style.marginLeft = currentplayer.margleft + "px"
+        setTimeout(function() {clearInterval(snkk)} , 135)
         
-        clearInterval(snkk)
         
         currentplayer.lastpoint = currentplayer.currentposition       
 } 
@@ -248,7 +249,8 @@ function ladder (currentplayer, stop) {
     if ( currentplayer.currentposition ===  stop ) {
         currentplayer.bufferposition -= (currentplayer.bufferposition - stop)
         currentplayer.fishka.style.marginLeft = currentplayer.margleft + "px"
-        clearInterval(snkk)
+        setTimeout(function() {clearInterval(snkk)} , 135)
+        
         console.log(currentplayer.bufferposition, currentplayer.currentposition)     
 } 
 },1)
