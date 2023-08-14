@@ -1,6 +1,7 @@
 let pole = document.getElementById("pole")
 let dropbtn = document.getElementById("drop")
 let dropbtn2 = document.getElementById("drop2")
+let ooh = document.getElementById("ooh")
 let nechetnie = [11,12,13,14,15,16,17,18,19,31,32,33,34,35,36,37,38,39,51,52,53,54,55,56,57,58,59,71,72,73,74,75,76,77,78,79,91,92,93,94,95,96,97,98,99]
 let nechetnie2 = [20,40,60,80,11,12,13,14,15,16,17,18,19,31,32,33,34,35,36,37,38,39,51,52,53,54,55,56,57,58,59,71,72,73,74,75,76,77,78,79,91,92,93,94,95,96,97,98,99]
 
@@ -230,6 +231,7 @@ function sneak (currentplayer, stop) {
 
 
 function ladder (currentplayer, stop) {
+    ooh.play()
     console.log("на змее")
     setTimeout(function() {
     let snkk = setInterval(function(){ 
