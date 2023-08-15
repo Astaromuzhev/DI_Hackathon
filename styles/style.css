@@ -1,0 +1,101 @@
+/* ASTAR 15/08/2023 */
+*{
+    text-align:center;  
+}
+.label_player{
+}
+.header_3{
+    margin-top: 5px;
+    color : blue;
+    font-size: 22px;
+}
+.player-area{
+    position: relative;
+}
+.game-area{
+    padding : 5px;
+}
+img.drop-cube-img {
+    border-radius: 50% 50% 50% 50%;
+}
+.drop-cube{
+    position: absolute;
+    bottom: 5px;
+    margin-left: -75px;
+    border-radius: 50% 50% 50% 50%;
+    border-color : #6CC7DD;    
+}
+.pole {
+    background: url(/images/back.jpg);
+    background-size:cover ;
+    height: 718px;
+    width: 718px;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+
+    position: relative;
+}
+
+.kletka {
+    width: 100%;
+    height: 100%;
+    padding: 3px;
+    box-sizing: border-box;
+    position : relative;
+
+}
+span {
+    background-color: #ffffff;
+    border-radius: 50%;
+    color: #000;
+    font-size: 12px;
+    padding: 1px;
+    position : absolute;
+    top : 10px;
+    right: 5px;
+}
+
+.player1{
+    background: url(/images/easy_mode_player_2.jpg);
+    background-size:cover ;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    /* background-color: red; */
+    
+    position: absolute;
+    margin-bottom: 20.95;
+    bottom: 13px;
+    /* position: absolute; 
+    left:50%;
+    margin-left: -15px;
+    bottom:50%;
+    margin-bottom: -15px;*/
+}
+
+.player2{
+     background: url(/images/easy_mode_player_2.jpg); 
+     background-size:cover ;
+}
+
+
+
+@keyframes moveAnimation {
+    from {
+        margin-bottom: 0; // начальное значение margin 
+    }
+    to {
+        margin-bottom: 70px; // конечное значение margin
+    }
+}
+
+
+/* @keyframes marginBottomAnimation {
+    from {
+        margin-bottom: 0;
+    }
+    to {
+        margin-bottom: 71.8px;
+    }
+} */

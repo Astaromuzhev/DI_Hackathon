@@ -1,5 +1,5 @@
 let pole = document.getElementById("pole")
-let dropbtn = document.getElementById("drop")
+let dropbtn = document.getElementById("drop_сube_1")
 let dropbtn2 = document.getElementById("drop2")
 let ooh = document.getElementById("ooh")
 let nechetnie = [11,12,13,14,15,16,17,18,19,31,32,33,34,35,36,37,38,39,51,52,53,54,55,56,57,58,59,71,72,73,74,75,76,77,78,79,91,92,93,94,95,96,97,98,99]
@@ -33,7 +33,9 @@ function createField () {
 
         newkletka.setAttribute("id", span.textContent) // add id to every block
         pole.appendChild(newkletka)
+        if (i!=100){
         newkletka.appendChild(span)
+    }
     }
 }
 createField ()
@@ -272,7 +274,7 @@ function action () {
 
 randomnumber = getRandomNumber() // создаем рандомное число
 let dvalue = document.getElementById("drop-value")
-dvalue.textContent = randomnumber // выводим рандомное число
+//dvalue.textContent = randomnumber // выводим рандомное число
 
     let move = setInterval(function(){   // начинаем повторение
          positionChecker (actualgamer)  //получаем поизцию активного игрока
