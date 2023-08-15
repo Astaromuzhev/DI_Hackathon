@@ -26,7 +26,7 @@ img.drop-cube-img {
     border-color : #6CC7DD;    
 }
 .pole {
-    background: url(/images/back.jpg);
+    background: url(../images/back.jpg);
     background-size:cover ;
     height: 718px;
     width: 718px;
@@ -57,7 +57,7 @@ span {
 }
 
 .player1{
-    background: url(/images/easy_mode_player_2.jpg);
+    background: url(../images/easy_mode_player_2.jpg);
     background-size:cover ;
     height: 50px;
     width: 50px;
@@ -75,7 +75,7 @@ span {
 }
 
 .player2{
-     background: url(/images/easy_mode_player_2.jpg); 
+     background: url(../images/easy_mode_player_2.jpg); 
      background-size:cover ;
 }
 
