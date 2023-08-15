@@ -260,7 +260,7 @@ function ladder (currentplayer, stop) {
 }
 
 
-function action () {
+function action () { 
     dropbtn.disabled = true
     if(checker === 3) {
         checker = 1
