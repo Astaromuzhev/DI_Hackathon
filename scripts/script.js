@@ -198,48 +198,49 @@ function continueGame()
     
         currentplayer.lastpoint = currentplayer.currentposition
     
+        //  Snakes and ladders
         if (currentplayer.lastpoint === 4) {
-            sneak (actualgamer,14)
+            ladder (actualgamer,14)
         } else if (currentplayer.lastpoint === 9) {
-            sneak (actualgamer,31)
+            ladder (actualgamer,31)
         } else if (currentplayer.lastpoint === 28) {
-            sneak (actualgamer,84)
+            ladder (actualgamer,84)
         } else if (currentplayer.lastpoint === 21) {
-            sneak (actualgamer,42)
+            ladder (actualgamer,42)
         } else if (currentplayer.lastpoint === 36) {
-            sneak (actualgamer,44)
+            ladder (actualgamer,44)
         } else if (currentplayer.lastpoint === 51) {
-            sneak (actualgamer,67)
+            ladder (actualgamer,67)
         } else if (currentplayer.lastpoint === 71) {
-            sneak (actualgamer,91)
+            ladder (actualgamer,91)
         } else if (currentplayer.lastpoint === 80) {
-            sneak (actualgamer,100)
+            ladder (actualgamer,100)
         } else if (currentplayer.lastpoint === 16) {
-            ladder (actualgamer,6)
+            snake (actualgamer,6)
         } else if (currentplayer.lastpoint === 49) {
-            ladder (actualgamer,30)
+            snake (actualgamer,30)
         } else if (currentplayer.lastpoint === 47) {
-            ladder (actualgamer,26)
+            snake (actualgamer,26)
         } else if (currentplayer.lastpoint === 56) {
-            ladder (actualgamer,53)
+            snake (actualgamer,53)
         } else if (currentplayer.lastpoint === 62) {
-            ladder (actualgamer,19)
+            snake (actualgamer,19)
         } else if (currentplayer.lastpoint === 63) {
-            ladder (actualgamer,60)
+            snake (actualgamer,60)
         }  else if (currentplayer.lastpoint === 87) {
-            ladder (actualgamer,24)
+            snake (actualgamer,24)
         } else if (currentplayer.lastpoint === 93) {
-            ladder (actualgamer,73)
+            snake (actualgamer,73)
         } else if (currentplayer.lastpoint === 95) {
-            ladder (actualgamer,75)
+            snake (actualgamer,75)
         } else if (currentplayer.lastpoint === 98) {
-            ladder (actualgamer,78)
+            snake (actualgamer,78)
         } 
     }   
     }
     
-    
-    function sneak (currentplayer, stop) {
+    // ladder function
+    function ladder (currentplayer, stop) {
         laddersound.play()
         setTimeout(function() {
         let snkk = setInterval(function(){ 
@@ -263,7 +264,7 @@ function continueGame()
     }
     
     
-    function ladder (currentplayer, stop) {
+    function snake (currentplayer, stop) {
         snakesound.play()
         console.log("на змее")
         setTimeout(function() {
@@ -292,7 +293,6 @@ function continueGame()
         setTimeout(() => {
             this.classList.remove("rotated");
         }, 300);
-        //gamers switcher
         dropbtn.disabled = true
         if(checker === 3) {
             checker = 1
@@ -331,8 +331,7 @@ function continueGame()
             console.log(checker)
     }
     dropbtn.addEventListener("click", action)
-    
-    // dropbtn2.addEventListener("click", action2)
+
 }
 
 
