@@ -1,6 +1,8 @@
 /* GLEB*/
 function continueGame()
 {
+
+  
     let game_area_id= document.getElementById("game-area-id");
     let start_pole = document.getElementById("start_pole");
     let pole_for_html = document.createElement("div");//getElemenetById();
@@ -17,9 +19,12 @@ function continueGame()
     let player2name = document.getElementById("player2name")
     let p1chance = document.getElementById("p1chance")
     let p2chance = document.getElementById("p2chance")
-    
+    let winnerdiv = document.getElementById("winner")
     let snakesound = document.getElementById("snakesound")
     let laddersound = document.getElementById("ladder")
+    let winn = document.getElementById("win")
+    let player1namessss = document.getElementById("player1name")
+    let player2namessss = document.getElementById("player1name")
     let backgroundsound = document.getElementById("backgroundsound")
     let nechetnie = [11,12,13,14,15,16,17,18,19,20,31,32,33,34,35,36,37,38,39,51,52,53,54,55,56,57,58,59,71,72,73,74,75,76,77,78,79,91,92,93,94,95,96,97,98,99]
     let nechetnie2 = [20,40,60,80,11,12,13,14,15,16,17,18,19,31,32,33,34,35,36,37,38,39,51,52,53,54,55,56,57,58,59,71,72,73,74,75,76,77,78,79,91,92,93,94,95,96,97,98,99]
@@ -27,7 +32,7 @@ function continueGame()
     let ltrNum = 81
     
     
-    
+    console.log(player1namessss.innerText)
     // Create game field -------------------------------------------------------------------------
     function createField () {
         
@@ -85,6 +90,7 @@ function continueGame()
     
     let playersData = [
         {
+        id: 1,
         margleft: 0,
         fishka: document.getElementById("player1"),
         currentposition: 1,
@@ -95,6 +101,7 @@ function continueGame()
     
         },
         {
+        id: 2,
         margleft: 0,
         fishka: document.getElementById("player2"),
         currentposition: 1,
@@ -130,7 +137,18 @@ function continueGame()
             currentplayer.fishka.style.marginLeft = currentplayer.margleft +"px"
             currentplayer.margleft++
         }
+
+        if(currentplayer.currentposition === 100) {
+            winn.style.display = "flex"
+            if(currentplayer.id === 1) {
+                winnerdiv.innerHTML = `congratulations ${player1namessss.textContent} you are winner`
+            } else {
+                winnerdiv.innerHTML = `congratulations ${player2namessss.textContent} you are winner`
+            }
+            
+        }
     }
+    
     
     
     

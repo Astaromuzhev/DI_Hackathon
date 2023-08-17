@@ -3,6 +3,8 @@
         height: 100vh !important;
         justify-content: center !important;
         flex-wrap: nowrap !important;
+        margin-top: 20px !important;
+    margin-left: -20px !important;
 }
 .drop-area{
     position: relative;
@@ -17,8 +19,7 @@ body{
     height: 100vh;
     margin: 0;
     padding: 0;
-    /* font-family: 'Pacifico', cursive !important; */
-/* /* font-family: 'Poppins', sans-serif; */
+
 font-family: 'Preahvihear', sans-serif !important; 
 }
 .start_pole {
@@ -32,7 +33,7 @@ font-family: 'Preahvihear', sans-serif !important;
         left:50%;
         top:10%;
         margin-top: -50px;
-        margin-left:-200px;
+        margin-left: -250px;
         margin-bottom:-20px; 
     }
 #img_start_snake{
@@ -42,8 +43,6 @@ font-family: 'Preahvihear', sans-serif !important;
 input[type="text"]
 {
     margin: 10px;
-    /* width: 200%; */
-    /* height: 200%; */
     border: none;
     border-radius:15px;
     height: 50px;
@@ -91,11 +90,6 @@ span {
     font-size: 12px;
     align-items: center;
     justify-content: center;
-    /* background-color: #ffffff;
-    border-radius: 20px;
-    color: #000;
-    font-size: 12px;
-    padding: 1px; */
 }
 
 .player1{
@@ -168,6 +162,7 @@ span {
     top: 30%;
     margin-top: -50px;
     height: 100px;
+    padding: 7px;
     width: 90%;
     border: 3px solid#fff;
     text-align: center;
@@ -212,4 +207,19 @@ span {
 
 .dropleft{
     margin-right: 30px;
+}
+
+.winn {
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    background: #99fff6;
+    z-index: 2;
+    color: #2f2f2f;
+    font-size: 40px;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    display: none;
 }
