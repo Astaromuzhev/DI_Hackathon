@@ -17,28 +17,16 @@
     <audio id="backgroundsound" autoplay loop src="./sounds/background.wav"></audio>
 
     <row class="row row_area">
-        <div id="drop-area_id" class="col-sm-3 drop-area">
-            <!-- Replace -> Dom -->
-            <!-- <div id="drop-value"></div> -->
-            <!-- <div id="drop"></div> -->
+        <div id="drop-area_id" class="col-sm-3 drop-area dropleft">
         </div>
         <div id="game-area-id" class="col-sm-6 game-area">
-            <!-- Replace -> Dom -->
-            <!-- <div id="pole" class="pole"> -->
-            <!-- Dom Delete start_pole-->
             <div id="start_pole" class="start_pole">
                 <div class="form_container">
+                    <h1>Snakes and Ladders</h1>
                 <img id="img_start_snake" src="./images/snake.png">
                 <form onSubmit="startGame(event)" id="form_id" name="form_name">
                     <input type="text" id="Player_1_name" placeholder="Player 1">
                     <input type="text" id="Player_2_name" placeholder="Player 2">
-                    <!-- </br> -->
-                    <!-- Add choosing Mode to next Sprint -->
-                        <!-- Mode:<select onchange="handleSelect(event)" id="selectMode"> -->
-                            <!-- <option value="1">Easy</option> -->
-                            <!-- <option value="2">Medium</option> -->
-                            <!-- <option value="3">Hard</option> -->
-                        <!-- </select> -->
                     </br>
                     <input id="form_button" type="submit" value="Let's Start!">
                 </form>
@@ -46,15 +34,6 @@
             </div>
         </div>
         <div id="player-area-id" class="col-sm-3 gamerfield">
-        <!-- Replace -> Dom -->
-            <!-- <div class="flex"> -->
-                <!-- <p id="player1name" class="pname activeplayer">Fox</p> -->
-                <!-- <p id="p1chance" class="yourchance activechance">your chance has come</p> -->
-            <!-- </div> -->
-            <!-- <div class="flex"> -->
-                <!-- <p id="player2name" class="pname">Panda</p> -->
-                <!-- <p id="p2chance" class="yourchance">your chance has come</p> -->
-            <!-- </div> -->
         </div>
     </row>
     <script src="./scripts/script.js"></script>

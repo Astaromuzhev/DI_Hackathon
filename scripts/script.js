@@ -3,7 +3,6 @@ function continueGame()
 {
     let game_area_id= document.getElementById("game-area-id");
     let start_pole = document.getElementById("start_pole");
-
     let pole_for_html = document.createElement("div");//getElemenetById();
     pole_for_html.id = "pole";
     pole_for_html.className = "pole";
@@ -82,9 +81,6 @@ function continueGame()
     pole.appendChild(player2)
     
     
-    
-    
-    
     let randomnumber;
     
     let playersData = [
@@ -108,34 +104,15 @@ function continueGame()
         }
     ]
     
-    
-    
     let gamer1 = playersData[0]
-    
     let gamer2 = playersData[1]
-    
-    
-    
     let actualgamer = gamer1
-    
-    console.log(actualgamer.fishka)
     let checker = 1
     
-    
-    
-    
-    
-    
-    
+
     // currentplayer == actualgamer
     
-    
     function moover (currentplayer, rannum) {
-        // if ([10,20,30,40,50,60,70,80,90].includes(currentplayer.currentposition) && (currentplayer.currentposition !==  rannum + currentplayer.bufferposition)) {
-            
-        //     currentplayer.fishka.style.marginBottom = currentplayer.marginbottom+"px"
-        //     currentplayer.marginbottom += 71.8
-    
          if (currentplayer.currentposition ===  (rannum + currentplayer.bufferposition)){
             return
          }else if (currentplayer.margleft === 660) {
@@ -153,10 +130,6 @@ function continueGame()
             currentplayer.fishka.style.marginLeft = currentplayer.margleft +"px"
             currentplayer.margleft++
         }
-    
-        // if([11,31,51,71,91].includes(currentplayer.lastpoint + rannum)){
-        //     console.log("на 11 итд")
-        // }
     }
     
     
@@ -166,13 +139,10 @@ function continueGame()
         if ([11,21,31,41,51,61,71,81,91].includes(currentplayer.currentposition) && (currentplayer.currentposition !==  randomnumber + currentplayer.bufferposition)) {
             currentplayer.marginbottom -= 71.8
             currentplayer.fishka.style.marginBottom = currentplayer.marginbottom+"px"
-    
-        
         } else if (nechetnie2.includes(currentplayer.currentposition)) {
             currentplayer.margleft++
             currentplayer.fishka.style.marginLeft = currentplayer.margleft +"px"
             console.log("++++")
-    
         } else {
             currentplayer.margleft--
             currentplayer.fishka.style.marginLeft = currentplayer.margleft +"px"
@@ -201,14 +171,12 @@ function continueGame()
         if ( currentplayer.currentposition ===  randnumber + currentplayer.bufferposition || 
             currentplayer.currentposition === 100 ) {
             currentplayer.bufferposition += randnumber
-          
             if([11,21,31,41,51,61,71,81,91].includes(currentplayer.currentposition)) {
                 clearInterval(intervalname)
             } else {
                 setTimeout(function() {clearInterval(intervalname)} , 135)
             }
-            
-            
+        
     
         currentplayer.lastpoint = currentplayer.currentposition
     
@@ -249,9 +217,7 @@ function continueGame()
         } else if (currentplayer.lastpoint === 98) {
             ladder (actualgamer,78)
         } 
-    } 
-    
-    console.log(currentplayer.lastpoint)    
+    }   
     }
     
     
@@ -263,20 +229,14 @@ function continueGame()
         moover (currentplayer, stop);
     
         if ( currentplayer.currentposition ===  stop ) {
-    
-    
             currentplayer.bufferposition += (stop - currentplayer.bufferposition)
             currentplayer.fishka.style.marginLeft = currentplayer.margleft + "px"
-    
             if([11,21,31,41,51,61,71,81,91].includes(currentplayer.currentposition)) {
                 clearInterval(snkk)
             } else {
                 setTimeout(function() {clearInterval(snkk)} , 135)
             }
-    
             // setTimeout(function() {clearInterval(snkk)} , 135)
-    
-    
             currentplayer.lastpoint = currentplayer.currentposition   
             
     } 
@@ -302,11 +262,6 @@ function continueGame()
             } else {
                 setTimeout(function() {clearInterval(snkk)} , 135)
             }
-            
-    
-            // setTimeout(function() {clearInterval(snkk)} , 135)
-    
-    
             console.log(currentplayer.bufferposition, currentplayer.currentposition)     
     } 
     },1)
@@ -315,27 +270,20 @@ function continueGame()
     
     
     function action () {
-    
-        
-        backgroundsound.play()
-    
         this.classList.add("rotated");
         setTimeout(() => {
             this.classList.remove("rotated");
         }, 300);
-    
         //gamers switcher
         dropbtn.disabled = true
         if(checker === 3) {
             checker = 1
         }
-    
         if (checker === 1) {
             actualgamer = gamer1
         } else if (checker === 2) {
             actualgamer = gamer2
         }
-    
     
         if ( checker === 2) {
             player1name.classList.add("activeplayer")
@@ -349,7 +297,6 @@ function continueGame()
             player1name.classList.remove("activeplayer")
             p1chance.classList.remove("activechance")
         }
-    
         console.log(actualgamer)
     
     
@@ -364,11 +311,7 @@ function continueGame()
             },1)
             checker++
             console.log(checker)
-         
     }
-    
-    
-    
     dropbtn.addEventListener("click", action)
     
     // dropbtn2.addEventListener("click", action2)
@@ -377,6 +320,7 @@ function continueGame()
 
 /*  17/08/2023 ASTAR Add startGame(e);*/
 function startGame(e){
+    backgroundsound.play()
     e.preventDefault();
     console.log(e);
     console.log("Start");

@@ -1,39 +1,30 @@
-/* ASTAR 15/08/2023 */
-/*.header_3{
-    margin-top: 5px;
-    color : blue;
-    font-size: 22px;
-
-}*/
-
+.row{
+    align-content: center;
+        height: 100vh !important;
+        justify-content: center !important;
+        flex-wrap: nowrap !important;
+}
 .drop-area{
     position: relative;
 }
 .game-area{
     padding : 5px;
+    width: 718px !important;
 }
-
-/*GLEB*/
 body{
     background-image: url(../images/background.jpg);
     background-size: cover;
-    /* height: 100vh; */
+    height: 100vh;
     margin: 0;
     padding: 0;
-    font-family: 'Pacifico', cursive;
-/* font-family: 'Poppins', sans-serif;
-font-family: 'Preahvihear', sans-serif; */
+    /* font-family: 'Pacifico', cursive !important; */
+/* /* font-family: 'Poppins', sans-serif; */
+font-family: 'Preahvihear', sans-serif !important; 
 }
 .start_pole {
-    /*    background: url(../images/back.jpg);
-        background-size:cover ;*/
         height: 718px;
         width: 718px;
         text-align: center;
-        /* margin:15px; */
-        /* display: grid;
-        grid-template-columns: repeat(10, 1fr);
-        grid-template-rows: repeat(10, 1fr); */
         position: relative;
     }
 .form_container{
@@ -50,12 +41,13 @@ font-family: 'Preahvihear', sans-serif; */
 }
 input[type="text"]
 {
-    margin: 20px;
+    margin: 10px;
     /* width: 200%; */
     /* height: 200%; */
     border: none;
     border-radius:15px;
     height: 50px;
+    padding-left: 20px;
 }
 input[type=submit]
 {
@@ -64,6 +56,10 @@ input[type=submit]
     align-items: center;
     border-radius:15px;
     height: 50px;
+    color: #fff;
+    width: 95%;
+    margin-top: 10px;
+    background: linear-gradient(178deg, rgb(253, 44, 56) 3.3%, rgb(176, 2, 12) 98.4%);
 }
 .pole {
     background: url(../images/back.jpg);
@@ -137,10 +133,12 @@ span {
     }
 }
 
+.col-sm-3{
+    width: 200px !important;
+}
 
 .gamerfield{
-    /* width: 200px; */
-    /* margin-left: 30px; */
+    margin-left: 30px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -166,13 +164,11 @@ span {
 }
 
 #drop-value{
-    position:absolute;
-    top:30%;/*ASTAR*/
-    margin-top:-50px;/*ASTAR*/
-    left:50%;
-    margin-left:-20%;
+    position: absolute;
+    top: 30%;
+    margin-top: -50px;
     height: 100px;
-    width: 40%;
+    width: 90%;
     border: 3px solid#fff;
     text-align: center;
     color: #002ae9;
@@ -186,7 +182,8 @@ span {
     font-size: 40px;
     color: #a2a2a2;
     margin: 0;
-    height: 80px
+    height: 80px;
+    font-family: Pacifico;
 }
 
 
@@ -213,3 +210,6 @@ span {
 }
 /* #FF5722; */
 
+.dropleft{
+    margin-right: 30px;
+}
