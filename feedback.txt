@@ -1,0 +1,9 @@
+Anna Staromuzhev & Gleb Svidzerski: Snakes and ladders
+Project Structure:10/10
+HTML Structure:7/10
+CSS and Design: 8/10
+JS and DOM: 8/10
+Clarity: 0/10
+score: 7
+The visual is incredible beautiful, well done!
+The project is well structured but I wish you could comment more in your code to make it easier to follow.
